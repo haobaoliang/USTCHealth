@@ -33,6 +33,7 @@
             >
         </activity>
         <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize|stateAlwaysHidden"
             android:theme="@style/Theme.Login"></activity>
         <activity
             android:name=".SetActivity"
