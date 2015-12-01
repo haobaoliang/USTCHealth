@@ -24,7 +24,7 @@ public class LoginActivity extends Activity {
 
     Button login_button;
     private InputMethodLayout layout01;
-  
+
     TextView textView;
     FrameLayout.LayoutParams layoutParams;
     LinearLayout linearLayout;
