@@ -32,9 +32,21 @@
                 android:value=".MainActivity" />
             >
         </activity>
-        <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize|stateAlwaysHidden"
-            android:theme="@style/Theme.Login"></activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/Theme.Login">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.Login"
+            android:windowSoftInputMode="stateVisible|adjustResize|stateAlwaysHidden"></activity>
         <activity
             android:name=".SetActivity"
             android:parentActivityName=".MainActivity"
@@ -42,7 +54,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-            >
+
         </activity>
     </application>
 

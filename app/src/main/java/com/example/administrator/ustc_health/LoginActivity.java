@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by HBL on 2015/11/28.

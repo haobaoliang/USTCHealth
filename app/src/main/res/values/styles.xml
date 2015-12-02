@@ -30,7 +30,10 @@
     <style name="Theme.Login" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#388e3c</item>
         <item name="colorPrimaryDark">#388e3c</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
+
     <style name="Theme.Set" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColor">@android:color/black</item>

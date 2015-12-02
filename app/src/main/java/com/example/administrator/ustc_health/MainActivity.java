@@ -169,6 +169,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.setClass(MainActivity.this,DeviceListActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.reg:
+                intent =new Intent();
+                intent.setClass(MainActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
