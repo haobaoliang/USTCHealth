@@ -42,7 +42,24 @@
                 android:value=".LoginActivity" />
 
         </activity>
+        <activity
+            android:name=".RegisterActivityFin"
+            android:parentActivityName=".RegisterActivityPh"
+            android:theme="@style/Theme.Login">
 
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RegisterActivityPh" />
+        </activity>
+        <activity
+            android:name=".RegisterActivityPh"
+            android:parentActivityName=".RegisterActivity"
+            android:theme="@style/Theme.Login">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RegisterActivity" />
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.Login"

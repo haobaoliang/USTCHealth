@@ -7,26 +7,14 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/reg_toolbar"
+        android:id="@+id/reg_ph_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
         app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    <include layout="@layout/activity_reg_timeline"></include>
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:src="@mipmap/ic_perimg"
-        app:civ_border_color="@android:color/white"
-        app:civ_border_width="2dp">
-
-    </de.hdodenhof.circleimageview.CircleImageView>
-
+    <include layout="@layout/activity_reg_timeline_ph"></include>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -46,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_person_white" />
+                android:src="@mipmap/ic_phone_android_white" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -54,12 +42,17 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Username"
+                android:hint="Number"
                 android:textColorHint="@android:color/white"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="验证码"
+                android:textColor="@android:color/holo_green_light"
+                android:background="@drawable/shape_button_reg"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -70,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_email_white" />
+                android:src="@mipmap/ic_format_list_numbered_white" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -78,70 +71,15 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="Email"
+                android:hint="654123"
                 android:textColorHint="@android:color/white"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_margin="10dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_lock_white" />
-
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:hint="Password"
-                android:textColorHint="@android:color/white"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_lock_white" />
-
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:hint="Password"
-                android:textColorHint="@android:color/white"
-                android:textSize="20sp" />
-
-
         </LinearLayout>
     </LinearLayout>
 
-
     <Button
-        android:id="@+id/reg_button"
+        android:id="@+id/reg_ph_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -150,8 +88,7 @@
         android:layout_marginTop="40dp"
 
         android:background="@drawable/shape_button_reg"
-        android:text="NEXT"
+        android:text="SIGN"
 
         android:textColor="@android:color/holo_green_light" />
-
 </LinearLayout>
