@@ -1,17 +1,14 @@
 <resources>
 
     <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo"></style>
-
     <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="colorPrimary">#388e3c</item>
         <item name="colorAccent">#00ff00</item>
         <item name="colorPrimaryDark">#388e3c</item>
-
         <!--  <item name="android:windowBackground">@color/window_background</item>-->
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textColorPrimary">@android:color/white</item>
-
 
     </style>
     <style name="Theme.ScanDemo"  parent="Theme.AppCompat.Light.NoActionBar">
@@ -22,7 +19,6 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
-
     <style name="Theme.Device" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#4caf50</item>
         <item name="colorPrimaryDark">#4caf50</item>
@@ -33,7 +29,6 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
-
     <style name="Theme.Set" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColor">@android:color/black</item>

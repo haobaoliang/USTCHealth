@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <!-- solid指定形状的填充色，只有android:color一个属性 -->
-    <solid android:color="@android:color/transparent" />
+    <solid android:color="@android:color/white" />
     <!-- padding设置内间距 -->
     <padding
         android:bottom="4dp"

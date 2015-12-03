@@ -213,7 +213,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:background="@drawable/shape_circular"
-        android:elevation="40dp">
+        >
 
         <TextView
             android:id="@+id/info_ly"

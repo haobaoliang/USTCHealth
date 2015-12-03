@@ -75,6 +75,6 @@ public class InputMethodLayout extends LinearLayout {
 	}
 
 	public interface onKeyboardsChangeListener {
-		public void onKeyBoardStateChange(int state);
+		void onKeyBoardStateChange(int state);
 	}
 }
