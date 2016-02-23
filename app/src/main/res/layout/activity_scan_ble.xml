@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="搜索手环"
+                android:text="搜索BLE手环"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
 
@@ -32,7 +32,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="请将手环佩戴到手腕上并靠近手机"
                 android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:textSize="13sp" />
         </LinearLayout>
 
         <FrameLayout
@@ -99,29 +99,29 @@
             android:layout_weight="1" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
 
 
             android:layout_gravity="center_horizontal"
             android:background="@drawable/shape_button1"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
             android:text="重新扫描"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_button1"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
             android:text="暂不搜索"
             android:textColor="@android:color/white"
             android:textSize="12sp" />

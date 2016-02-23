@@ -1,6 +1,7 @@
 <resources>
 
     <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo"></style>
+
     <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="colorPrimary">#388e3c</item>
@@ -11,7 +12,8 @@
         <item name="android:textColorPrimary">@android:color/white</item>
 
     </style>
-    <style name="Theme.ScanDemo"  parent="Theme.AppCompat.Light.NoActionBar">
+
+    <style name="Theme.ScanDemo" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="colorPrimaryDark">@android:color/darker_gray</item>
         <item name="colorControlHighlight">#ffffff</item>
@@ -19,22 +21,26 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
+
     <style name="Theme.Device" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#4caf50</item>
         <item name="colorPrimaryDark">#4caf50</item>
     </style>
+
     <style name="Theme.Login" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#388e3c</item>
         <item name="colorPrimaryDark">#388e3c</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+
     <style name="Theme.Set" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="colorPrimary">#ff5722</item>
         <item name="colorPrimaryDark">#ff5722</item>
     </style>
+
     <style name="Widget.CardContent" parent="android:Widget">
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>

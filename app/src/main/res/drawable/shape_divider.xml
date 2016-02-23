@@ -4,7 +4,7 @@
     <!-- 实际显示的线 -->
     <stroke
         android:width="2dp"
-        android:color="@android:color/white"
+        android:color="#388e3c"
         android:dashWidth="2dp"
         android:dashGap="2dp"/>
     <size android:height="1dp" />

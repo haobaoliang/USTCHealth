@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:elevation="20dp"
     android:orientation="horizontal"
-    android:paddingBottom="4dp"
-    android:paddingTop="4dp">
+    android:paddingBottom="3dp"
+    android:paddingTop="3dp">
 
     <LinearLayout
         android:id="@+id/ly_my"

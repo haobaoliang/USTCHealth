@@ -14,7 +14,7 @@
         android:id="@+id/friends_pic"
         android:layout_width="@dimen/list_item_avatar_size"
         android:layout_height="@dimen/list_item_avatar_size"
-        android:src="@mipmap/per_image"
+        android:src="@mipmap/ic_perimg"
         android:layout_marginRight="16dp"/>
 
     <TextView

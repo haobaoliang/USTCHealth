@@ -7,7 +7,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <com.example.administrator.ustc_health.InputMethodLayout
+    <com.example.administrator.login.InputMethodLayout
         android:id="@+id/layout_login01"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -26,7 +26,7 @@
                 android:layout_width="140dp"
                 android:layout_height="140dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/per_image"
+                android:src="@mipmap/ic_perimg"
                 app:civ_border_color="@android:color/white"
                 app:civ_border_width="2dp" />
 
@@ -41,7 +41,8 @@
                 android:textSize="25sp"
                />
 
-            <TextView
+            <Button
+                android:id="@+id/login_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
@@ -49,7 +50,8 @@
                 android:layout_marginRight="5dp"
                 android:text="Sign Up"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:background="@null"/>
 
         </FrameLayout>
         <LinearLayout
@@ -76,7 +78,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="30dp" />
         </LinearLayout>
-    </com.example.administrator.ustc_health.InputMethodLayout>
+    </com.example.administrator.login.InputMethodLayout>
 
     <LinearLayout
 
@@ -87,13 +89,12 @@
         android:orientation="vertical">
 
         <LinearLayout
-
             android:id="@+id/login_perinf"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/shape_divider"
             android:layerType="software"
             android:orientation="vertical">
@@ -116,7 +117,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:text="1234"
+                    android:textColor="@color/darker_gray"
                     android:hint="Email"
+
                     android:textSize="20sp" />
 
 
@@ -143,6 +147,7 @@
 
                     android:background="@null"
                     android:hint="Password"
+                    android:textColor="@color/darker_gray"
                     android:textSize="20sp" />
 
 
@@ -153,7 +158,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:gravity="center">
         <Button
             android:id="@+id/login_button"
