@@ -1,5 +1,6 @@
 package com.example.administrator.ustc_health;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.design.widget.TabLayout;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.heartview.HeartView;
+import com.example.administrator.set.ProFileActivity;
 import com.example.administrator.utils.ComFormu;
 import com.example.administrator.view.CircleProgressBar;
 import com.example.administrator.view.KcalView;
@@ -27,6 +29,8 @@ import com.example.administrator.view.KcalView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Administrator on 2015/10/21.
@@ -50,11 +54,12 @@ public class MyhealthActivity extends Fragment {
 
     static View heartV,stepV,kcalV,amountV;
 
+    CircleImageView myImage;
     Button mapButton,heartrateButton;
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_myhealth, container, false);
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
@@ -75,6 +80,16 @@ public class MyhealthActivity extends Fragment {
 
         tv_toolbar_state=(TextView)view.findViewById(R.id.tv_toolbar_state);
         tv_toolbar_state.setText("已连接");
+
+        myImage=(CircleImageView) view.findViewById(R.id.iv_toolbar_my);
+        myImage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(),ProFileActivity.class);
+                startActivity(intent);
+            }
+        });
         heartrateButton=(Button)view.findViewById(R.id.bt_heartrate_detail_button) ;
         heartrateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +98,8 @@ public class MyhealthActivity extends Fragment {
             }
         });
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+       ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         heartrateDetail();
         List<String> titles = new ArrayList<>();
         titles.add("日");

@@ -24,13 +24,14 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.set_toolbar);
+       final Toolbar toolbar = (Toolbar) findViewById(R.id.set_toolbar);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("个人设置");
 
         linearLayout=(LinearLayout)findViewById(R.id.ly_setting_th);
-        linearLayout.setOnClickListener(this);
+       linearLayout.setOnClickListener(this);
     }
 
     @Override
