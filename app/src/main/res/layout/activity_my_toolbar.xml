@@ -71,7 +71,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="请输入查找内容"
-                    android:textColorHint="@color/holo_green_dark"
+                    android:textColorHint="@android:color/holo_green_dark"
                     android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>

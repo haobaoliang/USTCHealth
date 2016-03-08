@@ -5,26 +5,23 @@
 
     <item
         android:id="@+id/action_share"
-        android:title="设置"
+        android:title="个人设置"
         app:showAsAction="never" /> 
 
-    <item
+  <!--  <item
         android:id="@+id/changeInput"
-        android:title="加好友" />
+        android:title="加好友" />-->
 
 
-    <item
+    <!--<item
         android:id="@+id/exit"
-        android:title="退出" />
+        android:title="退出" />-->
 
     <item
         android:id="@+id/scan"
-        android:title="我的设备" />
+        android:title="设备扫描" />
       
     <item
         android:id="@+id/reg"
-        android:title="登陆" />
-
-     
-     
+        android:title="登陆注册" />
 </menu>

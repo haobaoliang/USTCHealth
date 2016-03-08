@@ -31,11 +31,11 @@ public class MyFriendsActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_myfriends, container, false);
 
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+       /* Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("好友");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("好友");*/
 
 
         tabLayout = (TabLayout) view.findViewById(R.id.friends_tab);

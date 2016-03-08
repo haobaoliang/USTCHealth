@@ -7,6 +7,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.DesignDemo">
+        <meta-data
+            android:name="com.example.administrator.ustc_health"
+            android:value="LGXaCxt7OVhanvZuXiIRoD1i" />
 
         <activity
             android:name=".MainActivity"
@@ -72,37 +75,53 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-
         </activity>
         <activity
             android:name="com.example.administrator.set.ProFileActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Set">
+            android:theme="@style/Theme.ProFile">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name="com.example.administrator.set.MyProFileActivity"
+            android:parentActivityName="com.example.administrator.set.ProFileActivity"
+            android:theme="@style/Theme.MyProFile">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.set.ProFileActivity" />
+        </activity>
 
+        <activity android:name="com.example.administrator.baidumap.MapActivity"></activity>
         <service android:name="com.example.administrator.ble.BluetoothLeService"></service>
         <service android:name="com.example.administrator.ble.DeviceControlService"></service>
-
-        <receiver android:name=".MainActivity$MyBroadcastReceiver">
+        <receiver android:name=".MainActivity$MyBroadcastReceiver01">
             <intent-filter>
-                <action android:name="com.example.administrator.ble.MY_BROADCAST" />
+                <action android:name="com.example.administrator.ble.MY_BROADCAST01" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".MainActivity$MyBroadcastReceiver02">
+            <intent-filter>
+                <action android:name="com.example.administrator.ble.MY_BROADCAST02" />
             </intent-filter>
         </receiver>
     </application>
 
-    //蓝牙ble权限
     <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
-
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    //可以获取使用Wi-Fi等WLAN无线网络
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    //改变WLAN状态的开关，如果打开或关闭Wi-Fi必需加入android.permission.CHANGE_WIFI_STATE的声明
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="false" />

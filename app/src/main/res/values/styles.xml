@@ -14,8 +14,8 @@
     </style>
 
     <style name="Theme.ScanDemo" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@android:color/darker_gray</item>
-        <item name="colorPrimaryDark">@android:color/darker_gray</item>
+        <item name="colorPrimary">#03a9f4</item>
+        <item name="colorPrimaryDark">#03a9f4</item>
         <item name="colorControlHighlight">#ffffff</item>
         <!--  <item name="android:windowBackground">@color/window_background</item>-->
         <item name="android:textColor">@android:color/white</item>
@@ -40,7 +40,18 @@
         <item name="colorPrimary">#ff5722</item>
         <item name="colorPrimaryDark">#ff5722</item>
     </style>
-
+    <style name="Theme.ProFile" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="colorPrimary">#f50057</item>
+        <item name="colorPrimaryDark">#f50057</item>
+    </style>
+    <style name="Theme.MyProFile" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="colorPrimary">#03a9f4</item>
+        <item name="colorPrimaryDark">#03a9f4</item>
+    </style>
     <style name="Widget.CardContent" parent="android:Widget">
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>

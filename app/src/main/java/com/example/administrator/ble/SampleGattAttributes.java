@@ -33,6 +33,7 @@ public class SampleGattAttributes {
     /**
      * 主服务uuid，gatt服务由BluetoothGattService类代表
      */
+    public static boolean checkflag=false;
     public static String GATT_SERVICE_PRIMARY = "00008000-0000-1000-8000-00805f9b34fb";//服务号
     /**
      * notify特性uuid  暂时理解为对给定characteristic进行异步传输

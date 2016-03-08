@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/activity_toolbar"></include>
-
     <LinearLayout
         android:id="@+id/ly_myhealth_detail"
         android:layout_width="match_parent"
@@ -15,10 +13,12 @@
         android:orientation="vertical">
 
         <FrameLayout
+            android:id="@+id/myhealth_frame_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include
+
+           <!-- <include
                 android:id="@+id/include_heartrate_detail"
                 layout="@layout/activity_heartrate_detail"
                 android:layout_width="fill_parent"
@@ -46,7 +46,27 @@
                 android:layout_height="fill_parent"
                 android:visibility="gone"></include>
 
+            <include
+                android:id="@+id/include_week_heartrate_detail"
+                layout="@layout/activity_week_heartrate_detail"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:visibility="gone"></include>
+            <include
+                android:id="@+id/include_week_step_detail"
+                layout="@layout/activity_week_step_detail"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:visibility="gone"></include>
+
+            <include
+                android:id="@+id/include_month_heartrate_detail"
+                layout="@layout/activity_month_heartrate_detail"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:visibility="gone"></include>-->
             <Button
+                android:id="@+id/bt_myhealth_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -55,34 +75,26 @@
                 android:text="地图"
                 android:textColor="@color/white" />
         </FrameLayout>
-
-
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="2.0"
         android:orientation="vertical"
         android:paddingBottom="5dp">
-
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@android:color/white"
             app:tabIndicatorColor="@android:color/holo_green_dark"
             app:tabSelectedTextColor="@android:color/holo_green_dark"
             app:tabTextColor="@android:color/black" />
-
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:background="@android:color/white"
-
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </LinearLayout>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.administrator.heartview.HeartView
+    <com.example.administrator.view.HeartView
         android:id="@+id/heart_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
@@ -26,7 +26,7 @@
         android:text="55"
         android:textColor="@android:color/white"
         android:textSize="45sp" />
-    <Button
+    <!--<Button
         android:id="@+id/bt_heartrate_detail_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,27 +34,9 @@
         android:layout_marginTop="10dp"
         android:text="心率图"
         android:background="@drawable/shape_map_button"
-        android:textColor="@color/darker_gray" />
-
-
+        android:textColor="@color/darker_gray" />-->
 
 </FrameLayout>
 
 
-    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_stepnum_detail">
 
-        <com.example.administrator.view.ChartView
-
-            android:id="@+id/ly_heartrate_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="280dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="50dp" />
-
-
-    </FrameLayout>-->

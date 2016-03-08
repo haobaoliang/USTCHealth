@@ -69,7 +69,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
                 @Override
                 public void onClick(View view) {
                     DeviceBean bean=new DeviceBean(nameText.getText().toString(),addressText.getText().toString());
-
                     ((ScanBleActivity)mContext).startActivity(v,bean);
                 }
             });

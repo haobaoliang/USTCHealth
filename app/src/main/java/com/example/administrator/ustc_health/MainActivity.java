@@ -18,8 +18,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,16 +27,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.example.administrator.ble.DeviceControlService;
-import com.example.administrator.ble.DeviceListActivity;
 import com.example.administrator.ble.ScanBleActivity;
-
 import com.example.administrator.file.FileActivity;
 import com.example.administrator.friends.MyFriendsActivity;
 import com.example.administrator.login.LoginActivity;
+import com.example.administrator.set.ProFileActivity;
 import com.example.administrator.set.SetActivity;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_file;
     private TextView tv_friends;
 
-
     private Fragment myFragment;
     private Fragment fileFragment;
     private Fragment friendsFragment;
@@ -62,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     byte[] scan;
     public static String mDeviceName;
     public static String mDeviceAddress;
-    byte[] sevenData, adjustDate;
+
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
     //BLe控制服务
@@ -73,11 +70,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static String str01 = "0", str02 = "0";
 
+    private static TextView tv_toolbar_state;
+    CircleImageView myImage;
+    static ImageView iv_toolbar_refresh;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //判断是否支持ble
         initBle();
         final Intent intent = getIntent();
@@ -91,11 +91,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             Log.d(TAG, "EXTRAS_DEVICE_NAME:" + mDeviceName + " EXTRAS_DEVICE_ADDRESS:" + mDeviceAddress);
         }
-
         //绑定服务
         initService();
-        //注册广播接收器
-        // registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
         // 初始化控件
         initView();
         // 初始化底部按钮事件
@@ -104,30 +101,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initFragment(0);
         //检查程序是否为第一次运行
         if (checkIsFirstRun()) {
-            Intent intDet = new Intent();
-            intDet.setClass(MainActivity.this, ScanBleActivity.class);
-            startActivity(intDet);
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setIcon(R.mipmap.ic_warning_amber);
+            builder.setTitle("第一次运行");
+            builder.setMessage("此设备为第一次运行，是否扫描BLE？");
+            builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intDet = new Intent();
+                    intDet.setClass(MainActivity.this, ScanBleActivity.class);
+                    startActivity(intDet);
+                }
+            });
+            builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this, "不扫描", Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.show();
+
         } else {
             SharedPreferences sharedPreferences = this.getSharedPreferences("share", MODE_PRIVATE);
             String device_name = sharedPreferences.getString("DEVICE_NAME", "");
             Log.d(TAG, device_name);
             if (device_name.equals("")) {
-                Intent intDet = new Intent();
-                intDet.setClass(MainActivity.this, ScanBleActivity.class);
-                startActivity(intDet);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setIcon(R.mipmap.ic_warning_amber);
+                builder.setTitle("是否扫描绑定BLE");
+                builder.setMessage("此设备还没绑定BLE，是否前去绑定？");
+                builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intDet = new Intent();
+                        intDet.setClass(MainActivity.this, ScanBleActivity.class);
+                        startActivity(intDet);
+                    }
+                });
+                builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "不绑定", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.show();
+
             } else {
                 mDeviceAddress = device_name;
-               /* devConService.mBluetoothLeService.scanLeDevice(true);
-                boolean isSAME=devConService.mBluetoothLeService.isSAME;*/
-              /*  str01=sharedPreferences.getString("NEW_HEARTRATE", "60");
-                str02=sharedPreferences.getString("NEW_STEPNUM","1000");*/
-                /*if (true) {
-                    Log.d(TAG, "scan success!!");
-                    //   devConService.mBluetoothLeService.scanLeDevice(true);
-                } else {
-                    Log.d(TAG, "scan failed!!");
-                    Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_LONG).show();
-                }*/
             }
         }
     }
@@ -135,22 +155,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //检查程序是否为第一次运行
     private boolean checkIsFirstRun() {
         // 通过检查程序中的缓存文件判断程序是否是第一次运行
-
         SharedPreferences sharedPreferences = this.getSharedPreferences("share", MODE_PRIVATE);
         boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
         if (isFirstRun) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             Log.d(TAG, "第一次运行");
-            Toast.makeText(MainActivity.this, "第一次运行！", Toast.LENGTH_LONG).show();
+            //   Toast.makeText(MainActivity.this, "第一次运行！", Toast.LENGTH_LONG).show();
             editor.putBoolean("isFirstRun", false);
             editor.commit();
 
-
         } else {
             Log.d(TAG, "不是第一次运行！");
-            Toast.makeText(MainActivity.this, "不是第一次运行！", Toast.LENGTH_LONG).show();
-
-
+            //   Toast.makeText(MainActivity.this, "不是第一次运行！", Toast.LENGTH_LONG).show();
         }
 
         return isFirstRun;
@@ -161,9 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder service) {
                 devConService = ((DeviceControlService.LocalBinder) service).getService();
-
             }
-
             @Override
             public void onServiceDisconnected(ComponentName componentName) {
             }
@@ -177,7 +191,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d(TAG, "bindService failed!!");
         }
     }
-
     //是否支持BLE
     private boolean initBle() {
         //1.android:required="false",判断系统是否支持BLE
@@ -216,7 +229,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-
+        //Toolbar初始化
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         // 底部菜单5个Linearlayout
         menu_my = (LinearLayout) findViewById(R.id.ly_my);
         menu_file = (LinearLayout) findViewById(R.id.ly_file);
@@ -232,15 +248,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_file = (TextView) findViewById(R.id.tv_file);
         tv_friends = (TextView) findViewById(R.id.tv_friends);
 
-
-
+        tv_toolbar_state = (TextView) findViewById(R.id.tv_toolbar_state);
+        myImage = (CircleImageView) findViewById(R.id.iv_toolbar_my);
+        iv_toolbar_refresh = (ImageView) findViewById(R.id.iv_toolbar_refresh);
+        iv_toolbar_refresh.setVisibility(View.GONE);
     }
+
     // 设置按钮监听
     private void initEvent() {
 
         menu_my.setOnClickListener(this);
         menu_friends.setOnClickListener(this);
         menu_file.setOnClickListener(this);
+        myImage.setOnClickListener(this);
+        iv_toolbar_refresh.setOnClickListener(this);
 
     }
 
@@ -260,7 +281,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     transaction.show(myFragment);
                 }
                 break;
-
             case 3:
                 if (fileFragment == null) {
                     fileFragment = new FileActivity();
@@ -296,8 +316,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (fileFragment != null) {
             transaction.hide(fileFragment);
         }
-
-
     }
 
     @Override
@@ -309,33 +327,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_share:
-                Log.d("MyhealthActivity", "action_share");
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, SetActivity.class);
                 startActivity(intent);
                 break;
 
-            case R.id.changeInput:
-                intent = new Intent();
-                intent.setClass(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                break;
             case R.id.scan:
                 intent = new Intent();
                 intent.setClass(MainActivity.this, ScanBleActivity.class);
                 startActivity(intent);
                 break;
 
-            case R.id.exit:
-                intent = new Intent();
-                intent.setClass(MainActivity.this, DeviceListActivity.class);
-                startActivity(intent);
-                break;
             case R.id.reg:
                 intent = new Intent();
                 intent.setClass(MainActivity.this, LoginActivity.class);
@@ -361,52 +365,67 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        restartBotton();
+
         switch (v.getId()) {
             case R.id.ly_my:
+                restartBotton();
                 iv_my.setImageResource(R.mipmap.me);
                 tv_my.setTextColor(0xff008000);
                 initFragment(0);
                 break;
             case R.id.ly_file:
+                restartBotton();
                 iv_file.setImageResource(R.mipmap.find);
                 tv_file.setTextColor(0xff008000);
                 initFragment(3);
                 break;
             case R.id.ly_friends:
+                restartBotton();
                 iv_friends.setImageResource(R.mipmap.contact);
                 tv_friends.setTextColor(0xff008000);
                 initFragment(4);
                 break;
-
+            case R.id.iv_toolbar_my:
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, ProFileActivity.class);
+                startActivity(intent);
+                break;
         }
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unbindService(serCon);//解除绑定，否则会报异常
     }
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
     @Override
     protected void onResume() {
         super.onResume();
     }
-
-
     //service通知Activity扫描
-    public static class MyBroadcastReceiver extends BroadcastReceiver {
+    public static class MyBroadcastReceiver01 extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context, "已经连接到设备", Toast.LENGTH_SHORT).show();
-          /*  LayoutInflater inflater = LayoutInflater.from(context);
-            View toast_view = inflater.inflate(R.layout.activity_mytoast, null);
-            Toast toast = new Toast(context);
-            toast.setView(toast_view);
-            toast.show();*/
+            //  Toast.makeText(context, "已经连接到设备", Toast.LENGTH_SHORT).show();
+            tv_toolbar_state.setText("已连接");
+            iv_toolbar_refresh.setVisibility(View.GONE);
+
         }
     }
+    public static class MyBroadcastReceiver02 extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //  Toast.makeText(context, "已经连接到设备", Toast.LENGTH_SHORT).show();
+            tv_toolbar_state.setText("未连接");
+            //iv_toolbar_refresh.setVisibility(View.VISIBLE);
+            iv_toolbar_refresh.setVisibility(View.GONE);
+
+        }
+    }
+
 }
 
 

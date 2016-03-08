@@ -12,7 +12,6 @@ public class DeviceBean {
         this.address = address;
     }
 
-
     public String getAddress() {
         return address;
     }

@@ -22,15 +22,15 @@ import com.example.administrator.view.CircleProgressBar;
  */
 public class DeviceListActivity extends Activity {
 
-    LinearLayout layout;
+    /*LinearLayout layout;
     private PopupWindow popupWindow;
     ImageView imageView;
-    Toolbar toolbar;
+    Toolbar toolbar;*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
-        layout=(LinearLayout)findViewById(R.id.ly_loc);
+        setContentView(R.layout.activity_device_list);
+       /* layout=(LinearLayout)findViewById(R.id.ly_loc);
         layout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -62,6 +62,6 @@ public class DeviceListActivity extends Activity {
                 popupWindow.update();
             }
         });
-
+*/
     }
 }

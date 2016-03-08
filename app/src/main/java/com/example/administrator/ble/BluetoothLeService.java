@@ -69,6 +69,8 @@ public class BluetoothLeService extends Service {
     public final static String ACTION_GATT_SERVICES_DISCOVERED = "com.example.bluetooth.le.ACTION_GATT_SERVICES_DISCOVERED";
     public final static String ACTION_DATA_AVAILABLE = "com.example.bluetooth.le.ACTION_DATA_AVAILABLE";
     public final static String UpData = "com.example.bluetooth.le.UpData";
+
+    public final static String ACTION_GATT_WIRTE_SUCCESS= "com.example.bluetooth.le.ACTION_GATT_WIRTE_SUCCESS";
     //下面几个是默示连接用的
     private static final long SCAN_PERIOD = 8000;
     private HashMap<String, byte[]> scanrecordsMap = new HashMap<String, byte[]>();
@@ -142,10 +144,8 @@ public class BluetoothLeService extends Service {
         public void onCharacteristicWrite(BluetoothGatt gatt,
                                           BluetoothGattCharacteristic characteristic, int status) {
             System.out.println("--------write success----- status:" + status);
-
-        }
-
-        ;
+            broadcastUpdate(ACTION_GATT_WIRTE_SUCCESS);
+        };
     };
 
     private void broadcastUpdate(final String action) {
@@ -368,7 +368,7 @@ public class BluetoothLeService extends Service {
         return SampleGattAttributes.readMessage(mBluetoothGatt, uuid);
     }
 
-    boolean writeMessage(UUID uuid, byte[] data) {
+    public boolean writeMessage(UUID uuid, byte[] data) {
         System.out.println("--------try to write  in sevice----- ");
         return SampleGattAttributes.sendMessage(mBluetoothGatt, data, uuid);
 
@@ -391,21 +391,19 @@ public class BluetoothLeService extends Service {
             if (device.getAddress().equals(device_name)) {
                 scanLeDevice(false);
                 //Toast显示已经扫描到设备
-                Intent intent = new Intent("com.example.administrator.ble.MY_BROADCAST");
+                Intent intent = new Intent("com.example.administrator.ble.MY_BROADCAST01");
                 sendBroadcast(intent);
                 Log.e(TAG, "scanLeDevice(false)");
                 if (!(Arrays.equals(scanrecordsMap.get(MainActivity.mDeviceAddress), scanRecord))) {
                     //Log.e(TAG, MainActivity.mDeviceAddress);
                     //int i;if((scanrecordsMap.get(DeviceControlActivity.mDeviceAddress)!=null))for(i=0;i<=61;i++)Log.e(TAG,Integer.toHexString(scanRecord[i] & 0x000000ff) + ""+Integer.toHexString(scanrecordsMap.get(DeviceControlActivity.mDeviceAddress)[i] & 0x000000ff));    // Sets up UI references.
-
                     scanrecordsMap.put(device.getAddress(), scanRecord);
                     broadcastUpdate(UpData, scanrecordsMap.get(MainActivity.mDeviceAddress));
                 }
             } else {
-             /*   Intent intent = new Intent("com.example.administrator.ble.MY_BROADCAST");
-                sendBroadcast(intent);*/
-                //Toast显示已经扫描到设备
-                // Toast.makeText(getApplication(),"连接失败！请到搜索界面进行搜索设备",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent("com.example.administrator.ble.MY_BROADCAST02");
+                sendBroadcast(intent);
+
             }
         }
 
@@ -427,8 +425,5 @@ public class BluetoothLeService extends Service {
         } else {
             mBluetoothAdapter.stopLeScan(mLeScanCallback);
         }
-
     }
-
-
 }

@@ -21,11 +21,11 @@ public class FileActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_file, container, false);
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+       /* Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("文件");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("文件");*/
       //  ((AppCompatActivity) getActivity()).getSupportActionBar().setLogo(R.mipmap.ic_perimg);;
         return view;
     }
